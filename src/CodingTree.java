@@ -1,9 +1,11 @@
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.BitSet;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -20,6 +22,7 @@ public class CodingTree {
 	List<CharF> frequencies = new ArrayList<CharF>();
 	PriorityQueue<Node> nodeQueue;
 	Node finishedTree;
+	
 
 
 
@@ -29,6 +32,7 @@ public class CodingTree {
 		bitString = "";
 		nodeQueue = new PriorityQueue<Node>();
 		bits = new ArrayList<Byte>();
+		
 		countCharFrequency();
 		generateTree();
 		generateCodes();
@@ -38,33 +42,66 @@ public class CodingTree {
 
 	private void encode() {
 		int len = textString.length(), curPos = 0;
+		
+		
+		StringBuilder sb = new StringBuilder();
 		while(len-- > 1) {
-			bitString += codes.get(textString.charAt(curPos++));			
-		}
-		
-		//convert string to byte array
-		
-		while(!bitString.isEmpty()){
-			String singleByte = "";
-			if(bitString.length() > 7) {
-				singleByte = bitString.substring(0, 8);
-				bitString = bitString.substring(8);
-			} else {
-				singleByte = bitString;
-				while(singleByte.length() < 9) singleByte += "0";
-				bitString =  "";
-			}
-			byte tempB = 0;
-			for(int i =0; i<8; i++) {
-				byte temp = (byte) Integer.parseInt(singleByte.substring(i, i+1));
-				tempB += temp << 8-i;
-				
-			}
-			bits.add(tempB);
 			
+			sb.append(codes.get(textString.charAt(curPos++)));
+						
+		}
+		bitString = sb.toString();
+		
+		
+		int index = 0; 
+		while(index <  bitString.length() - 8) {
+			if (bitString.length() - index > 7) {
+				bits.add((byte) Integer.parseInt(
+						bitString.substring(index, index + 8), 2));
+				index += 8;
+			} else {
+				byte tempB = 0;
+				for(int i =0; i<8; i++) {
+					byte temp = (byte) Integer.parseInt(bitString.substring(index));
+					tempB += temp << 7-i;
+					index+=8;
+				}
+				bits.add(tempB);
+			}
+			if(index %8000 ==0)System.out.println(index);
 		}
 		
 		
+//		//convert string to byte array
+//		
+//		while(sb.length() > 0){
+//			String singleByte = "";
+//			if(sb.length() > 7) {
+//				singleByte = sb.substring(0, 8);
+//				sb.delete(0, 8);
+//			} else {
+//				singleByte = bitString;
+//				while(singleByte.length() < 9) singleByte += "0";
+//				sb.delete(0, sb.length());
+//			}
+//			byte tempB = 0;
+//			for(int i =0; i<8; i++) {
+//				byte temp = (byte) Integer.parseInt(singleByte.substring(i, i+1));
+//				tempB += temp << 7-i;
+//				
+//			}
+//			bits.add(tempB);
+//			if(bits.size()%1000==0)System.out.println(bits.size());
+//			
+//		}
+		
+		
+		
+		
+	}
+
+
+	private void setBits(BitSet bitS2, String string) {
 		
 		
 	}

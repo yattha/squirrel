@@ -58,10 +58,7 @@ public class Main {
 			//OutputStream outFile = new BufferedOutputStream(new FileOutputStream("./compressed.txt")); 
 			
 			OutputStream out = new BufferedOutputStream(new FileOutputStream("./compressed.txt"));
-			
-			for(int i = 0; i < textTree.bits.size(); i++) {
-				out.write(textTree.bits.get(i).byteValue());
-			}
+			for(int i = 0 ; i < textTree.bits.size(); i++) out.write(textTree.bits.get(i).byteValue());
 			
 			out.close();
 			
