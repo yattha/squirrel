@@ -33,6 +33,7 @@ public class Main {
 		File textFile = fp.getSelectedFile();
 		
 		try {
+			long start = System.currentTimeMillis();
 			@SuppressWarnings("resource")
 			FileInputStream stream = new FileInputStream(textFile);
 			int charRead = 1;
@@ -41,6 +42,8 @@ public class Main {
 				theText.append(((char) charRead));
 			}
 			stream.close();
+			
+			System.out.println((double)(System.currentTimeMillis()-start)/1000 + "s");
 		} catch (IOException | NullPointerException e) {
 		
 		}	

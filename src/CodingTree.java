@@ -68,7 +68,7 @@ public class CodingTree {
 				}
 				bits.add(tempB);
 			}
-			if(index %8000 ==0)System.out.println(index);
+			//if(index %8000 ==0)System.out.println(index);
 		}
 		
 		
