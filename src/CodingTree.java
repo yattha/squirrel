@@ -38,7 +38,32 @@ public class CodingTree {
 		generateCodes();
 		encode();
 	}
-
+	
+	public String decode(String theBitString, Map<Character, String> theCodes) {
+		StringBuilder result = new StringBuilder(), currentBits = new StringBuilder();
+		
+		int len = theBitString.length(), curPos = 0;
+		
+		
+		
+		while(len-- > 1) {
+			
+			currentBits.append(theBitString.charAt(curPos++));
+			if(theCodes.containsValue(currentBits.toString())) {
+				for(Map.Entry<Character, String> e : theCodes.entrySet()){
+					if(e.getValue().equals(currentBits.toString())){
+						result.append(e.getKey().charValue());
+						currentBits.delete(0, currentBits.length());
+						//if(len%10000==0)System.out.println(len/10000);
+					}
+				}
+			}
+						
+		}
+		
+		
+		return result.toString();
+	}
 
 	private void encode() {
 		int len = textString.length(), curPos = 0;
@@ -101,16 +126,8 @@ public class CodingTree {
 	}
 
 
-	private void setBits(BitSet bitS2, String string) {
-		
-		
-	}
 
 
-	public String Decode(List<Byte> theBits, Map<Character, String> theCodes){
-
-		return "";
-	}
 
 	
 	private void countCharFrequency() {
