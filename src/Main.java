@@ -22,7 +22,7 @@ public class Main {
 		CodingTree textTree = new CodingTree(text.toString());
 		
 		generateOutput(textTree);
-		
+		System.out.println(textTree.decode(textTree.bitString, textTree.codes));
 		//System.out.println(text.toString());
 	}
 	
@@ -43,7 +43,10 @@ public class Main {
 			}
 			stream.close();
 			
+			
+			
 			System.out.println((double)(System.currentTimeMillis()-start)/1000 + "s");
+			
 		} catch (IOException | NullPointerException e) {
 		
 		}	
@@ -62,6 +65,9 @@ public class Main {
 			
 			OutputStream out = new BufferedOutputStream(new FileOutputStream("./compressed.txt"));
 			for(int i = 0 ; i < textTree.bits.size(); i++) out.write(textTree.bits.get(i).byteValue());
+			
+			
+			
 			
 			out.close();
 			

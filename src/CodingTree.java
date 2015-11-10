@@ -20,7 +20,7 @@ public class CodingTree {
 	String bitString; 
 	String textString;
 	List<CharF> frequencies = new ArrayList<CharF>();
-	PriorityQueue<Node> nodeQueue;
+	MyPriorityQueue<Node> nodeQueue;
 	Node finishedTree;
 	
 
@@ -30,7 +30,7 @@ public class CodingTree {
 		textString = message;
 		codes = new HashMap<Character, String>();
 		bitString = "";
-		nodeQueue = new PriorityQueue<Node>();
+		nodeQueue = new MyPriorityQueue<Node>();
 		bits = new ArrayList<Byte>();
 		
 		countCharFrequency();
