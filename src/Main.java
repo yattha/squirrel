@@ -16,6 +16,74 @@ import javax.swing.JFileChooser;
 public class Main {
 
 	public static void main(String[] args) {
+//		MyPriorityQueue<Integer> test = new MyPriorityQueue<Integer>();
+//		
+//		test.add(5);
+//		test.add(3);
+//		test.add(6);
+//		test.add(7);
+//		//System.out.println(test);
+//		test.add(1);
+//		test.add(2);
+//		test.add(0);
+//		test.add(88);
+//		test.add(66);
+//		test.add(9);
+//		test.add(2);
+//		
+//		test.add(11);
+//		System.out.println(test);
+//		System.out.println("polls");
+//		
+//		
+//		test.poll();
+//		System.out.println(test +"first poll");
+//		
+//		test.poll();
+//	System.out.println(test);
+//		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		StringBuilder text = new StringBuilder("");
 		
 		readTxt(text);
