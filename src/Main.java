@@ -82,16 +82,10 @@ public class Main {
 
 		JButton uncompB = new JButton("DeCompress");
 		uncompB.addActionListener(new ActionListener(){
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Map<Character, String> inCodes = new HashMap<Character, String>();
 				StringBuilder inBits = new StringBuilder(), tempByte = new StringBuilder();
-				
-				
-				
-				
-				
 				JFileChooser fp = new JFileChooser(".");
 				fp.setDialogTitle("Choose compressed file");
 				fp.showOpenDialog(null);
@@ -107,7 +101,7 @@ public class Main {
 						tempByte.delete(0, tempByte.length());
 						tempByte.append(Integer.toBinaryString(byteRead));
 						while(tempByte.length()<8) tempByte.insert(0, '0');
-						if(numberread++%1000 == 0) System.out.println(numberread/1000);
+						
 						
 						inBits.append(tempByte.toString());
 					
@@ -125,9 +119,10 @@ public class Main {
 				
 				File codeFile = fp.getSelectedFile();
 				StringBuilder codesSB = new StringBuilder();
+				long start= 0;
 				try {
 					
-					long start = System.currentTimeMillis();
+					start = System.currentTimeMillis();
 					@SuppressWarnings("resource")
 					FileInputStream stream = new FileInputStream(codeFile);
 					int charRead = 1;
@@ -145,15 +140,14 @@ public class Main {
 					String[] charWithCodeArray = codeString.split(", ");
 					int i = 0;
 					while(charWithCodeArray.length> i) {
-						System.out.println("adding " + charWithCodeArray[i].charAt(0) + ", " + charWithCodeArray[i].substring(2));
+						
 						inCodes.put(charWithCodeArray[i].charAt(0), charWithCodeArray[i].substring(2));
 						i++;
 					}
 					
 					
 					
-					System.out.println("starting decode");
-					System.out.println(CodingTree.decode(inBits.toString(), inCodes));
+					
 								
 					
 						
@@ -164,10 +158,11 @@ public class Main {
 				PrintStream outputFile;		
 				
 				try {
+					
 					outputFile = new PrintStream(new File("./decompressed.txt"));
 					outputFile.append(CodingTree.decode(inBits.toString(), inCodes));
-					outputFile.close();				
-					
+					outputFile.close();
+					textDisplay.setText("Decompression finished: decompressed.txt produced.\nTime Elapsed: " + (System.currentTimeMillis()-start)/1000 +"s");
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
