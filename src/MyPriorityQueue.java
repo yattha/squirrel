@@ -3,6 +3,10 @@ import java.util.Iterator;
 import java.util.List;
 //Some of the code sourced from http://courses.cs.washington.edu/courses/cse373/11wi/homework/5/BinaryHeap.java
 
+/*
+ * Derek Moore & Heather Pedersen
+ */
+
 public class MyPriorityQueue<T extends Comparable<T>>{
 
 	List<T> members;

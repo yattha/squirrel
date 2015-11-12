@@ -1,17 +1,16 @@
-import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.BitSet;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.PriorityQueue;
 
+
+/*
+ * Derek Moore & Heather Pedersen
+ */
 
 public class CodingTree {
 
@@ -20,7 +19,7 @@ public class CodingTree {
 	String bitString; 
 	String textString;
 	List<CharF> frequencies = new ArrayList<CharF>();
-	MyPriorityQueue<Node> nodeQueue;
+	PriorityQueue<Node> nodeQueue;
 	Node finishedTree;
 	
 
@@ -30,7 +29,7 @@ public class CodingTree {
 		textString = message;
 		codes = new HashMap<Character, String>();
 		bitString = "";
-		nodeQueue = new MyPriorityQueue<Node>();
+		nodeQueue = new PriorityQueue<Node>();
 		bits = new ArrayList<Byte>();		
 		countCharFrequency();
 		generateTree();
@@ -38,7 +37,7 @@ public class CodingTree {
 		encode();
 	}
 	
-	public String decode(String theBitString, Map<Character, String> theCodes) {
+	public static String decode(String theBitString, Map<Character, String> theCodes) {
 		StringBuilder result = new StringBuilder(), currentBits = new StringBuilder();		
 		int len = theBitString.length(), curPos = 0;		
 		
