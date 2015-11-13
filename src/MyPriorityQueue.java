@@ -51,7 +51,11 @@ public class MyPriorityQueue<T extends Comparable<T>>{
 		for(T item :members) {
 			result += (item.toString() + ", ");
 		}
+		if (result.length() == 1) {
+			result += "..";
+		}
 		result = result.substring(0, result.length()-2) + "]";
+		
 		return result;
 	}
 	

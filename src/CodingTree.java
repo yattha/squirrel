@@ -56,6 +56,7 @@ public class CodingTree {
 	}
 
 	private void encode() {
+		bits.clear();
 		int len = textString.length(), curPos = 0;		
 		StringBuilder sb = new StringBuilder();
 		while(len-- > 1) {			
